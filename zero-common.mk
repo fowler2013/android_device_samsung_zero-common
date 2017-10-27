@@ -89,7 +89,13 @@ PRODUCT_PACKAGES += \
     audio.r_submix.default \
     audio.usb.default \
     tinymix \
-    libtinycompress
+    libtinycompress \
+		android.hardware.audio@2.0-impl \
+    android.hardware.audio.effect@2.0-impl
+
+# Bluetooth
+PRODUCT_PACKAGES += \
+    android.hardware.bluetooth@1.0-impl
 
 # Browser
 PRODUCT_PACKAGES += \
@@ -98,9 +104,11 @@ PRODUCT_PACKAGES += \
 # Camera
 PRODUCT_PACKAGES += \
     camera.exynos5 \
-    Snap
+    Snap \
+		camera.device@3.2-impl \
+    android.hardware.camera.provider@2.4-impl
 
-# DTB    
+# DTB
 PRODUCT_PACKAGES += \
 	dtbhtoolExynos
 
@@ -113,15 +121,32 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/gps.conf:system/etc/gps.conf \
     $(LOCAL_PATH)/configs/gps.xml:system/etc/gps.xml \
     $(LOCAL_PATH)/configs/lhd.conf:system/etc/lhd.conf
-    
+
 # Fingerprint
 PRODUCT_PACKAGES += \
     fingerprintd \
-    libbauthtzcommon_shim
+    libbauthtzcommon_shim \
+		android.hardware.biometrics.fingerprint@2.1-service
 
 # Graphics
 PRODUCT_PACKAGES += \
-    gralloc.exynos5
+    libhwc2on1adapter \
+    android.hardware.graphics.allocator@2.0-impl \
+    android.hardware.graphics.allocator@2.0-service \
+    android.hardware.graphics.composer@2.1-impl \
+    android.hardware.graphics.mapper@2.0-impl
+
+ # RenderScript HAL
+PRODUCT_PACKAGES += \
+     android.hardware.renderscript@1.0-impl
+
+# DRM
+PRODUCT_PACKAGES += \
+     android.hardware.drm@1.0-impl
+
+# IR
+PRODUCT_PACKAGES += \
+    android.hardware.ir@1.0-impl
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
@@ -142,6 +167,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     AdvancedDisplay
 
+# Memory
+PRODUCT_PACKAGES += \
+     android.hardware.memtrack@1.0-impl
+
 # Media profile
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml \
@@ -157,7 +186,8 @@ PRODUCT_PACKAGES += \
     libnfc_nci_jni \
     NfcNci \
     Tag \
-    com.android.nfc_extras
+    com.android.nfc_extras \
+		android.hardware.nfc@1.0-impl
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/nfcee_access.xml:system/etc/nfcee_access.xml \
@@ -166,7 +196,8 @@ PRODUCT_COPY_FILES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    power.universal7420
+    power.universal7420 \
+		android.hardware.power@1.0-impl
 
 # common build properties
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -202,7 +233,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.ril.hsxpa=1 \
     ro.ril.telephony.mqanelements=6 \
     ro.ril.gprsclass=10
-    
+
 # Ramdisk
 PRODUCT_PACKAGES += \
     fstab.samsungexynos7420 \
@@ -218,6 +249,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     SamsungServiceMode
 
+# Sensorhub
+PRODUCT_PACKAGES += \
+    android.hardware.sensors@1.0-impl
+
 # Wifi
 PRODUCT_PACKAGES += \
     hostapd \
@@ -225,7 +260,8 @@ PRODUCT_PACKAGES += \
     macloader \
     wifiloader \
     wpa_supplicant \
-    wpa_supplicant.conf
+    wpa_supplicant.conf \
+		android.hardware.wifi@1.0-service
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
